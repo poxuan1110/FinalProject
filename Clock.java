@@ -10,10 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class Clock extends JPanel implements KeyListener, ActionListener {
-    private int x = 400;
-    private int y = 300;
-    private int radius = 20;
+public class Clock extends JPanel implements ActionListener {
     private BufferedImage clock, second, minute, hour, image;
     private Timer secondtimer;
     private double secondAngle;
@@ -33,7 +30,6 @@ public class Clock extends JPanel implements KeyListener, ActionListener {
         this.hourAngle = (Double.parseDouble(timeComponents[0]) * 30 + Double.parseDouble(timeComponents[1]) * 0.5 + Double.parseDouble(timeComponents[2]) * (0.5 / 60)) % 360;
 
         setFocusable(true);
-        addKeyListener(this);
         
         try {
             clock = ImageIO.read(new File("clock.png"));
@@ -129,36 +125,6 @@ public class Clock extends JPanel implements KeyListener, ActionListener {
         int countryWidth = metrics.stringWidth(country); // Get the width of the current time string
         int countryX = (getWidth() - countryWidth) / 2;
         g.drawString(country, countryX, 753); 
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();
-        switch (key) {
-            case KeyEvent.VK_LEFT:
-                x -= 5;
-                break;
-            case KeyEvent.VK_RIGHT:
-                x += 5;
-                break;
-            case KeyEvent.VK_UP:
-                y -= 5;
-                break;
-            case KeyEvent.VK_DOWN:
-                y += 5;
-                break;
-        }
-        repaint();
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        // No implementation needed
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        // No implementation needed
     }
 
     @Override
