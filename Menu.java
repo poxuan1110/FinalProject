@@ -3,8 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TextPanel extends JPanel {
-    public TextPanel() {
+public class Menu extends JPanel {
+    public Menu() {
         // 設定佈局管理器為 BoxLayout，垂直排列組件
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -36,7 +36,7 @@ public class TextPanel extends JPanel {
         line2Label.setFont(font);
         line2Label.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        JLabel instructionLabel = new JLabel("Please enter the function you want to operate or click the function.");
+        JLabel instructionLabel = new JLabel("Please click the function you want to operate.");
         instructionLabel.setFont(font);
         instructionLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
@@ -59,8 +59,8 @@ public class TextPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 removeAll(); // 移除所有组件
                 setLayout(new BorderLayout());
-                revalidate(); // 重新验证布局
-                repaint(); // 重新绘制面板
+                revalidate(); // 重新驗證布局
+                repaint(); // 重新繪製面板
                 ChangePanel changePanel = new ChangePanel();
                 add(changePanel, BorderLayout.CENTER);
             }
@@ -71,8 +71,8 @@ public class TextPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 removeAll(); // 移除所有组件
                 setLayout(new BorderLayout());
-                revalidate(); // 重新验证布局
-                repaint(); // 重新绘制面板
+                revalidate(); // 重新驗證布局
+                repaint(); // 重新繪製面板
 
                 ListPanel listPanel = new ListPanel();
                 add(listPanel, BorderLayout.CENTER);

@@ -14,10 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Region extends JPanel{
+public class SpecialCountry extends JPanel{
 
-    public Region(String country) {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+    public SpecialCountry(String country) {
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));//垂直布局
 
         Font font = new Font("Serif", Font.PLAIN, 24);
 
@@ -29,7 +29,7 @@ public class Region extends JPanel{
         add(Box.createVerticalStrut(10)); // 添加一些空間
         Time time = new Time();
 
-        AllCountry change = new AllCountry();
+        Data change = new Data();
         HashMap<String, Double> allTimeZoneOfTheCountry = change.getSpecialCountry().get(country);
 
         JButton[] allTimeZone = new JButton[allTimeZoneOfTheCountry.size()];
@@ -49,8 +49,8 @@ public class Region extends JPanel{
 
                 public void actionPerformed(ActionEvent e){
                     removeAll();  // 移除所有组件
-                    revalidate(); // 重新验证布局
-                    repaint();    // 重新绘制面板
+                    revalidate(); // 重新驗證布局
+                    repaint();    // 重新繪製面板
                     double duration = allTimeZoneOfTheCountry.get(allTimeZone[count].getText());
                     String changedTime = time.plusTime(duration);
                             
@@ -67,12 +67,12 @@ public class Region extends JPanel{
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     // 當按下 Esc 鍵時的處理代碼
                     removeAll();  // 移除所有组件
-                    revalidate(); // 重新验证布局
-                    repaint();    // 重新绘制面板
+                    revalidate(); // 重新驗證布局
+                    repaint();    // 重新繪製面板
                     // 添加初始元件
-                    TextPanel textpanel = new TextPanel();
+                    Menu textpanel = new Menu();
                     add(textpanel);
-                    JOptionPane.showMessageDialog(Region.this, "You pressed Esc, returning to main menu.");
+                    JOptionPane.showMessageDialog(SpecialCountry.this, "You pressed Esc, returning to main menu.");
                 }
             }
         });

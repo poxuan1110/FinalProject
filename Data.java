@@ -1,10 +1,10 @@
 import java.util.HashMap;
 
-public class AllCountry {
+public class Data {
     private HashMap<String, Double> otherCountry;
     private HashMap<String, HashMap<String, Double>> specialCountry;
     //  HashMap
-    public AllCountry() {
+    public Data() {
         otherCountry = new HashMap<>();
         specialCountry = new HashMap<>();
         //otherCountry.put("Zimbabwe", 2.0); 
@@ -184,7 +184,7 @@ public class AllCountry {
         otherCountry.put("Algeria", 1d);
         otherCountry.put("Albania", 1d);
         otherCountry.put("Afghanistan", 4.5);
-        //HashMap<String, HashMap<String, Double>> specialCountry = new HashMap<> ();
+
         HashMap<String, Double> Spain = new HashMap<> ();
         Spain.put("Main territory of Spain", 1d);
         Spain.put("Canary Islands", 0d);

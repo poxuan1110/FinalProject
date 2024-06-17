@@ -51,7 +51,7 @@ public class ChangePanel extends JPanel {
         add(button1);
         add(Box.createVerticalStrut(10)); // 添加一些空間
         add(button2);
-        add(Box.createVerticalStrut(20)); // 添加一些空間
+        add(Box.createVerticalStrut(10)); // 添加一些空間
         add(line2Label);
         add(Box.createVerticalStrut(10)); // 添加一些空間
         add(instructionLabel);
@@ -61,8 +61,8 @@ public class ChangePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 removeAll();  // 移除所有组件
-                revalidate(); // 重新验证布局
-                repaint();    // 重新绘制面板
+                revalidate(); // 重新驗證布局
+                repaint();    // 重新繪製面板
                 Time time = new Time();
                 String currentTime = time.getCurrentTime();
                 Clock clock = new Clock(currentTime, "Taiwan");
@@ -74,8 +74,8 @@ public class ChangePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 removeAll();  // 移除所有组件
-                revalidate(); // 重新验证布局
-                repaint();    // 重新绘制面板
+                revalidate(); // 重新驗證布局
+                repaint();    // 重新繪製面板
                 ListPanel listPanel = new ListPanel();
                 add(listPanel);
             }
@@ -87,10 +87,10 @@ public class ChangePanel extends JPanel {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     removeAll();  // 移除所有组件
-                    revalidate(); // 重新验证布局
-                    repaint();    // 重新绘制面板
-                    TextPanel textpanel = new TextPanel();
-                    add(textpanel);
+                    revalidate(); // 重新驗證布局
+                    repaint();    // 重新繪製面板
+                    Menu menu = new Menu();
+                    add(menu);
                     JOptionPane.showMessageDialog(ChangePanel.this, "You pressed Esc, returning to main menu.");
                 }
             }
