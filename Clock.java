@@ -14,21 +14,27 @@ public class Clock extends JPanel implements ActionListener {
     private double secondAngle;
     private double minuteAngle;
     private double hourAngle;
-    private String currentTime; // To store the current time as a string
     private String country;
+    private String hours;
+    private String dateParts;
+    private String ampm = "A.M.";
 
     public Clock(String currentTime, String country) {
-        this.currentTime = currentTime; // Initialize the current time string
-        this.country = country;
 
+        this.country = country;
         String[] dateTimeParts = currentTime.split(" ");
+        dateParts = dateTimeParts[0];
         String timePart = dateTimeParts[1];
         String[] timeComponents = timePart.split(":");
-
+        hours = timeComponents[0];
         this.secondAngle = Double.parseDouble(timeComponents[2]) * 6;
         this.minuteAngle = (Double.parseDouble(timeComponents[1]) * 6 + Double.parseDouble(timeComponents[2]) * 0.1) % 360;
         this.hourAngle = (Double.parseDouble(timeComponents[0]) * 30 + Double.parseDouble(timeComponents[1]) * 0.5 + Double.parseDouble(timeComponents[2]) * (0.5 / 60)) % 360;
 
+        if(Double.parseDouble(hours) >= 12){
+            ampm = "P.M.";
+        }
+        dateParts += " " + ampm;
         setFocusable(true);
         
         try {
@@ -118,31 +124,19 @@ public class Clock extends JPanel implements ActionListener {
             g2d.drawImage(second, transform, this);
             g2d.dispose();
         }
-        
-        // Draw the additional image
-        /*if (image != null) {
-            Graphics2D g2d = (Graphics2D) g.create();
-            AffineTransform transform = new AffineTransform();
-            transform.translate(getWidth() / 2, getHeight() / 2);
-            transform.rotate(Math.toRadians(secondAngle));
-            transform.scale(1 / 3.0, 1 / 3.0);
-            transform.translate(-image.getWidth() / 3 - 30, -image.getHeight() / 3);
-            g2d.drawImage(image, transform, this);
-            g2d.dispose();
-        }*/
 
         // Draw the current time string
         g.setColor(Color.BLACK); // Set the text color
         g.setFont(new Font("Arial", Font.BOLD, 50)); // Set the font
 
         FontMetrics metrics = g.getFontMetrics(g.getFont());
-        int currentTimeWidth = metrics.stringWidth(currentTime); // Get the width of the current time string
+        int currentTimeWidth = metrics.stringWidth(dateParts); // Get the width of the current time string
         int currentTimeX = (getWidth() - currentTimeWidth) / 2; // Calculate the x coordinate for the text to be centered
         
         int countryWidth = metrics.stringWidth(country); // Get the width of the current time string
         int countryX = (getWidth() - countryWidth) / 2;
-        
-        g.drawString(currentTime, currentTimeX, 40);
+
+        g.drawString(dateParts, currentTimeX, 40);
         g.drawString(country, countryX, 753); 
     }
 
